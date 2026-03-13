@@ -2,8 +2,20 @@ name: Events Demo 1
 on: 
   pull_request:
     types: [opened, edited]
+    branches:
+      - main      # main
+      - 'dev-*'   # all branches that are start with dev- dev-cascd dev-uhv
+      - 'feat/**' # all branches that starts with feat/test, feat/1/dev
+
   workflow_dispatch:
-    
+  push:
+    branches:
+      - main      # main
+      - 'dev-*'   # all branches that are start with dev- dev-cascd dev-uhv
+      - 'feat/**' # all branches that starts with feat/test, feat/1/dev
+    paths-ignore:
+      - '.github/workflows/*'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
